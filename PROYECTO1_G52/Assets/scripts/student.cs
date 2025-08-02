@@ -1,11 +1,12 @@
 using UnityEngine;
 using System;
+using packagePersona;
 
 namespace packageStudent
 {
 
     [Serializable]
-    public class student
+    public class student : Persona
     {
 
         private string codeE;
@@ -15,7 +16,7 @@ namespace packageStudent
         {
         }
 
-        public student(string codeE, string nameCarreraE)
+        public student(string codeE, string nameCarreraE, string name, string mail, string dir)
         {
             this.codeE = codeE;
             this.nameCarreraE = nameCarreraE;

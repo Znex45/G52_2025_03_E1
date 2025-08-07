@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using packagePersona;
 
-namespace packageStudent
+namespace packagePersona
 {
 
     [Serializable]
@@ -17,6 +17,8 @@ namespace packageStudent
         }
 
         public student(string codeE, string nameCarreraE, string name, string mail, string dir)
+            : base(name, mail, dir)
+
         {
             this.codeE = codeE;
             this.nameCarreraE = nameCarreraE;

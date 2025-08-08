@@ -25,4 +25,4 @@ namespace packagePersona
         public string MailP { get => mailP; set => mailP = value; }
         public string DirP { get => dirP; set => dirP = value; }
     }
-    }
+}

@@ -6,15 +6,12 @@ using TMPro;
 
 public class Punto2DUIManager : MonoBehaviour
 {
-    [Header("Inputs")]
     public TMP_InputField inputX;
     public TMP_InputField inputY;
 
-    [Header("Botones")]
     public Button buttonAgregar;
     public Button buttonEliminar;
 
-    [Header("Salida")]
     public TMP_Text salidaLista;
 
     private List<Punto> puntos = new List<Punto>();
@@ -27,7 +24,6 @@ public class Punto2DUIManager : MonoBehaviour
 
     void Start()
     {
-        // Semilla de ejemplo
         if (puntos.Count == 0)
         {
             puntos.Add(new Punto(2f, 3f));

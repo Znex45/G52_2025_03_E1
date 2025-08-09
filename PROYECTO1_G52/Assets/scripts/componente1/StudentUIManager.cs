@@ -6,14 +6,13 @@ using packagePersona;
 
 public class StudentUIManager : MonoBehaviour
 {
-    [Header("Inputs")]
+
     public TMP_InputField inputcodigo;
     public TMP_InputField inputnombre;
     public TMP_InputField inputcorreo;
     public TMP_InputField inputdireccion;
     public TMP_InputField inputcarrera;
 
-    [Header("Botones")]
     public Button buttonAgregar;
     public Button buttonEliminar;
     public TMP_Text salidalista;

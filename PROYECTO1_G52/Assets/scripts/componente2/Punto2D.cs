@@ -6,8 +6,8 @@ namespace packagePunto2D
     [Serializable]
  public class Punto
  {
-       private float x;
-       private float y;
+       [SerializeField] private float x;
+       [SerializeField] private float y;
 
        public Punto()
        {

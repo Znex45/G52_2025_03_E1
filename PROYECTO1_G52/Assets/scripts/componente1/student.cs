@@ -9,8 +9,8 @@ namespace packagePersona
     public class student : Persona
     {
 
-        private string codeE;
-        private string nameCarreraE;
+        [SerializeField] private string codeE;
+        [SerializeField] private string nameCarreraE;
 
         public student()
         {

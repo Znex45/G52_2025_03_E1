@@ -6,12 +6,15 @@ using TMPro;
 
 public class Punto2DUIManager : MonoBehaviour
 {
+    [Header("Inputs")]
     public TMP_InputField inputX;
     public TMP_InputField inputY;
 
+    [Header("Botones")]
     public Button buttonAgregar;
     public Button buttonEliminar;
 
+    [Header("Salida")]
     public TMP_Text salidaLista;
 
     private List<Punto> puntos = new List<Punto>();
@@ -22,46 +25,40 @@ public class Punto2DUIManager : MonoBehaviour
         buttonEliminar.onClick.AddListener(EliminarUltimoPunto);
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Semilla de ejemplo
+        if (puntos.Count == 0)
+        {
+            puntos.Add(new Punto(2f, 3f));
+            puntos.Add(new Punto(5f, 7f));
+        }
         RefrescarListaUI();
-
     }
 
     void AgregarPunto()
     {
-        // Validar que no estén vacíos
         if (string.IsNullOrWhiteSpace(inputX.text) || string.IsNullOrWhiteSpace(inputY.text))
         {
             Debug.LogWarning("Coordenadas X e Y son obligatorias.");
             return;
         }
-        float x, y;
-        if (!float.TryParse(inputX.text, out x) || !float.TryParse(inputY.text, out y))
+        if (!float.TryParse(inputX.text, out float x) || !float.TryParse(inputY.text, out float y))
         {
-            Debug.LogWarning("Coordenadas X e Y deben ser números válidos.");
+            Debug.LogWarning("X e Y deben ser números válidos.");
             return;
         }
-        var nuevoPunto = new Punto(x, y);
-        puntos.Add(nuevoPunto);
+
+        puntos.Add(new Punto(x, y));
         RefrescarListaUI();
         LimpiarInputs();
     }
 
-
     void EliminarUltimoPunto()
     {
-        if (puntos.Count > 0)
-        {
-            puntos.RemoveAt(puntos.Count - 1);
-            RefrescarListaUI();
-        }
-        else
-        {
-            Debug.LogWarning("No hay puntos para eliminar.");
-        }
+        if (puntos.Count == 0) return;
+        puntos.RemoveAt(puntos.Count - 1);
+        RefrescarListaUI();
     }
 
     void RefrescarListaUI()
@@ -69,7 +66,8 @@ public class Punto2DUIManager : MonoBehaviour
         salidaLista.text = "Puntos:\n";
         for (int i = 0; i < puntos.Count; i++)
         {
-            salidaLista.text += $"Punto {i + 1}: ({puntos[i].X}, {puntos[i].Y})\n";
+            var p = puntos[i];
+            salidaLista.text += $"Punto {i + 1}: ({p.X}, {p.Y})\n";
         }
     }
 
@@ -78,9 +76,15 @@ public class Punto2DUIManager : MonoBehaviour
         inputX.text = "";
         inputY.text = "";
     }
-    // Update is called once per frame
-    void Update()
+
+    public List<Punto> GetPuntosList()
     {
-        
+        return new List<Punto>(puntos);
+    }
+
+    public void SetPuntosList(List<Punto> nuevaLista)
+    {
+        puntos = nuevaLista ?? new List<Punto>();
+        RefrescarListaUI();
     }
 }
